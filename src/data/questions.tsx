@@ -6,6 +6,7 @@ export interface IAnswer {
 }
 
 export interface IQuestion {
+  id: number;
   text: | React.ReactNode;
   answers: IAnswer[];
   answerId: number;
@@ -13,6 +14,7 @@ export interface IQuestion {
 
 export const questions: IQuestion[] = [
   {
+    id: 1,
     text: "Which data structure is used for implementing a Last-In-First-Out (LIFO) behavior?",
     answers: [
       {
@@ -35,6 +37,7 @@ export const questions: IQuestion[] = [
     answerId: 2
   },
   {
+    id: 2,
     text: "Which data structure is used for storing a collection of elements in a non-linear fashion?",
     answers: [
       {
@@ -57,6 +60,7 @@ export const questions: IQuestion[] = [
     answerId: 4
   },
   {
+    id: 3,
     text: "Which of the following is not a commonly used relational database management system?",
     answers: [
       {
@@ -79,6 +83,7 @@ export const questions: IQuestion[] = [
     answerId: 1
   },
   {
+    id: 4,
     text: "Which of the following is a type of web server?",
     answers: [
       {
@@ -95,12 +100,13 @@ export const questions: IQuestion[] = [
       },
       {
         id: 4,
-        text: "All of the above"
+        text: "All of the options"
       }
     ],
     answerId: 4
   },
   {
+    id: 5,
     text: "Let x be an integer which can take a value of 0 or 1. The statement if(x = =0) x = 1; else x = 0; is equivalent to which one of the following?",
     answers: [
       {
@@ -123,6 +129,7 @@ export const questions: IQuestion[] = [
     answerId: 1
   },
   {
+    id: 6,
     text: <>
       <p>Choose the best statement with respect to following three program snippets.</p>
       <CopyBlock
@@ -178,12 +185,13 @@ do
       },
       {
         id: 4,
-        text: "None of the above is correct."
+        text: "None of the options is correct."
       }
     ],
     answerId: 4
   },
   {
+    id: 7,
     text: <><p>Consider the following logical inferences.</p>
       <p>I1: If it rains then the cricket match will not be played.</p>
       <p>The cricket match was played.</p>
@@ -213,6 +221,7 @@ do
     answerId: 1
   },
   {
+    id: 8,
     text: <>
       <p>Predict output of the following program</p>
       <CopyBlock
@@ -262,7 +271,9 @@ default:
       }
     ],
     answerId: 3
-  }, {
+  }, 
+  {
+    id: 9,
     text: <>
       <p>Predict output of the following program:</p>
       <CopyBlock
@@ -311,6 +322,7 @@ int main()
     answerId: 3
   },
   {
+    id: 10,
     text: <>
       <p>Consider the following recursive function fun(x, y). What is the value of fun(4, 3):</p>
       <CopyBlock
@@ -351,6 +363,7 @@ int main()
     answerId: 1
   },
   {
+    id: 11,
     text: <>
       <p>What is the output of the following program?</p>
       <CopyBlock
@@ -401,6 +414,7 @@ int main()
     answerId: 2
   },
   {
+    id: 12,
     text: <>
       <p>What is the output of the following Java program?</p>
       <CopyBlock
@@ -472,6 +486,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 13,
     text: <>
       <p>IF</p>
       <p>4 + 4 = 16</p>
@@ -502,6 +517,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 14,
     text: <>
       <p>Which two days are missing?</p>
       <p>SUNDAY</p>
@@ -536,6 +552,7 @@ class Main{
     answerId: 3
   },
   {
+    id: 15,
     text: "There are two ducks in front of a duck, two ducks behind a duck and a duck in the middle. How many ducks are there?",
     answers: [
       {
@@ -558,6 +575,7 @@ class Main{
     answerId: 4
   },
   {
+    id: 16,
     text: "What does VOIS stand for?",
     answers: [
       {
@@ -580,6 +598,7 @@ class Main{
     answerId: 2
   },
   {
+    id: 17,
     text: <p>Which country does <b>not</b> have a VOIS center?</p>,
     answers: [
       {
@@ -588,7 +607,7 @@ class Main{
       },
       {
         id: 2,
-        text: "Egipt"
+        text: "Egypt"
       },
       {
         id: 3,
@@ -596,12 +615,13 @@ class Main{
       },
       {
         id: 4,
-        text: "Germania"
+        text: "Germany"
       }
     ],
     answerId: 4
   },
   {
+    id: 18,
     text: "How many VOIS employees are there worldwide?",
     answers: [
       {
@@ -624,6 +644,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 19,
     text: "At VOIS, we are working with Cloud services from:",
     answers: [
       {
@@ -640,12 +661,13 @@ class Main{
       },
       {
         id: 4,
-        text: "All of the above"
+        text: "All"
       }
     ],
     answerId: 4
   },
   {
+    id: 20,
     text: <>
       <p>What does the following piece of code do?</p>
       <CopyBlock
@@ -690,6 +712,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 21,
     text: "Choose the recursive formula for the Fibonacci series.(n>=1)",
     answers: [
       {
@@ -712,6 +735,7 @@ class Main{
     answerId: 3
   },
   {
+    id: 22,
     text: "Recursion is a method in which the solution of a problem depends on ____________",
     answers: [
       {
@@ -734,6 +758,7 @@ class Main{
     answerId: 3
   },
   {
+    id: 23,
     text: <>
       <p>What will be the output of the following Java code?</p>
       <CopyBlock
@@ -775,6 +800,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 24,
     text: <>
       <p>What will be the output of the following JavaScript code snippet?</p>
       <CopyBlock
@@ -817,6 +843,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 25,
     text: "NoSQL databases is used mainly for handling large volumes of ______________ data.",
     answers: [
       {
@@ -839,6 +866,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 26,
     text: " ____________ data model with embedded data combines all related data for a represented entity in a single document.",
     answers: [
       {
@@ -861,6 +889,7 @@ class Main{
     answerId: 2
   },
   {
+    id: 27,
     text: "Which of the following testing is also known as white-box testing?",
     answers: [
       {
@@ -877,12 +906,13 @@ class Main{
       },
       {
         id: 4,
-        text: "None of the above"
+        text: "None of these options"
       }
     ],
     answerId: 1
   },
   {
+    id: 28,
     text: "Which of the following testing is related to the boundary value analysis?",
     answers: [
       {
@@ -899,12 +929,13 @@ class Main{
       },
       {
         id: 4,
-        text: "None of the above"
+        text: "None of these options"
       }
     ],
     answerId: 3
   },
   {
+    id: 29,
     text: "What are the different levels of Testing?",
     answers: [
       {
@@ -921,12 +952,13 @@ class Main{
       },
       {
         id: 4,
-        text: "All of the above"
+        text: "All of the options"
       }
     ],
     answerId: 4
   },
   {
+    id: 30,
     text: "Which of the following CSS selector is used to specify a rule to bind a particular unique element?",
     answers: [
       {
@@ -949,6 +981,7 @@ class Main{
     answerId: 2
   },
   {
+    id: 31,
     text: "Which of the following CSS property is used to make the text bold?",
     answers: [
       {
@@ -971,6 +1004,7 @@ class Main{
     answerId: 2
   },
   {
+    id: 32,
     text: "What is Infrastructure as a Service (IaaS)?",
     answers: [
       {
@@ -993,6 +1027,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 33,
     text: "What is the benefit of using cloud computing?",
     answers: [
       {
@@ -1015,6 +1050,7 @@ class Main{
     answerId: 1
   },
   {
+    id: 34,
     text: <>
       <p>Which of the C# code should be added to get the following output?</p>
       <CopyBlock
@@ -1131,6 +1167,7 @@ static void Main(string[] args)
     answerId: 3
   },
   {
+    id: 35,
     text: <>
       <p>For the incomplete C# program below, which of the c code fragment will <b>not</b> result in an infinite loop?</p>
       <CopyBlock
@@ -1233,5 +1270,93 @@ static void Main(string[] args)
       }
     ],
     answerId: 1
+  },
+  {
+    id: 36,
+    text: <>
+      <p>Which of the following pieces of code corrects the following program, resulting in printing the minus sign 20 times?</p>
+      <CopyBlock
+        text={
+`#include <stdio.h>
+int main(){
+  int i;
+  int n = 20;
+  for( i = 0; i < n; i-- )
+      printf("-");
+  return 0;
+}`
+        }
+        language="c"
+        showLineNumbers={true}
+        startingLineNumber={1}
+        wrapLines={true}
+        theme={dracula}
+        codeBlock
+      />
+    </>,
+    answers: [
+      {
+        id: 1,
+        text: 
+        <>
+          <CopyBlock
+          text={
+`for( i = 0; -i < n; i-- )
+printf("-");`
+          }
+          language="c"
+          showLineNumbers={true}
+          startingLineNumber={1}
+          wrapLines={true}
+          theme={dracula}
+          codeBlock
+          />
+          <br/>
+        </>
+      },
+      {
+        id: 2,
+        text: 
+        <>
+          <CopyBlock
+          text={
+`for( i = 0; i + n; i-- )
+printf("-");`
+        }
+          language="c"
+          showLineNumbers={true}
+          startingLineNumber={1}
+          wrapLines={true}
+          theme={dracula}
+          codeBlock
+        />
+        <br/>
+      </>
+      },
+      {
+        id: 3,
+        text: 
+        <>
+          <CopyBlock
+          text={
+`for( i = 0; i < n; n-- )
+printf("-");`
+        }
+          language="c"
+          showLineNumbers={true}
+          startingLineNumber={1}
+          wrapLines={true}
+          theme={dracula}
+          codeBlock
+        />
+        <br/>
+      </>
+      },
+      {
+        id: 4,
+        text: "All of them"
+      }
+    ],
+    answerId: 4
   },
 ];

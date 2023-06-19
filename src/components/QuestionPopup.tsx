@@ -1,22 +1,41 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField, colors } from "@mui/material";
+import {
+  Button,
+  ButtonProps,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  colors,
+  styled,
+} from "@mui/material";
+import _ from "lodash";
 import { FC, useEffect, useState } from "react";
 import { IAnswer, IQuestion } from "../data/questions";
-import _ from "lodash";
+import { purple } from "@mui/material/colors";
 
 interface IQuestionPopup {
   open: boolean;
   question: IQuestion;
-  prize: string;
   handleQuizEnd: (success: boolean) => void;
   handleCancel: () => void;
 }
 
+const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.getContrastText(purple[500]),
+  backgroundColor: purple[500],
+  '&:hover': {
+    backgroundColor: purple[700],
+  },
+}));
+
 const QuestionPopup: FC<IQuestionPopup> = ({
   open,
   question,
-  prize,
   handleQuizEnd,
-  handleCancel
+  handleCancel,
 }) => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [shuffledAnswers, setShuffledAnswers] = useState<IAnswer[]>([]);
@@ -26,18 +45,10 @@ const QuestionPopup: FC<IQuestionPopup> = ({
       setSelectedAnswer("");
       setShuffledAnswers(_.shuffle(question.answers));
     }
-  }, [open]);
+  }, [open, question.answers]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedAnswer((event.target as HTMLInputElement).value);
-  };
-
-  const handleClose = (event: object, reason: string) => {
-    if (reason === "backdropClick") {
-      return;
-    }
-
-    handleCancel();
   };
 
   const onSubmitHandler = () => {
@@ -48,40 +59,47 @@ const QuestionPopup: FC<IQuestionPopup> = ({
   return (
     <Dialog
       open={open}
-      onClose={handleClose}
+      onClose={handleCancel}
+      fullWidth
       maxWidth="md"
       PaperProps={{
         style: {
           backgroundColor: colors.common.black,
           color: colors.common.white,
         },
-      }}>
-      <DialogTitle>Answer the question to win a {prize}!</DialogTitle>
+      }}
+    >
       <DialogContent>
-        <DialogContentText variant="h6" py={2} color={colors.common.white}>
+        <div style={{ fontSize: "1.2em", marginBottom: "20px" }}>
           {question.text}
-        </DialogContentText>
+        </div>
         <FormControl>
           <RadioGroup
             name="answers-group"
             value={selectedAnswer}
             onChange={handleChange}
           >
-            {
-              shuffledAnswers.map((answer: IAnswer) =>
-                <FormControlLabel
-                  key={answer.id}
-                  value={answer.id}
-                  control={<Radio />}
-                  label={answer.text} />
-              )
-            }
+            {shuffledAnswers.map((answer: IAnswer) => (
+              <FormControlLabel
+                key={answer.id}
+                value={answer.id}
+                control={<Radio />}
+                label={answer.text}
+              />
+            ))}
           </RadioGroup>
         </FormControl>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={handleCancel}>Cancel</Button>
-        <Button onClick={onSubmitHandler}>Submit</Button>
+      <DialogActions style={{ justifyContent: "space-around" }}>
+        <ColorButton
+          variant="contained"
+          size="large"
+          className="submit-button"
+          onClick={onSubmitHandler}
+          disabled={selectedAnswer === ""}
+        >
+          Submit
+        </ColorButton>
       </DialogActions>
     </Dialog>
   );
