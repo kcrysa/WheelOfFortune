@@ -28,9 +28,7 @@ function App() {
 
     setPrize(option);
     setQuestion(questions[questionNumber]);
-    setTimeout(() => {
-      setOpen(true);
-    }, 1500);
+    setOpen(true);
   };
 
   const onHandleQuizEnd = (isCorrect: boolean) => {

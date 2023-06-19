@@ -20,8 +20,10 @@ const Roulette: FC<IRoulette> = ({ data, showQuestion }) => {
   };
 
   const handleSpinEnd = useCallback(() => {
-    setMustSpin(false);
-    showQuestion(data[prizeNumber].option!);
+    setTimeout(() => {
+      setMustSpin(false);
+      showQuestion(data[prizeNumber].option!);
+    }, 1000);
   }, [data, prizeNumber, showQuestion]);
 
   return (

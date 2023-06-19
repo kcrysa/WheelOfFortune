@@ -230,7 +230,7 @@ do
 switch (inchar)
 {
 case 'A' :
-    printf ("Choice A \n") ;
+    printf ("Choice A \\n") ;
 case 'B' :
     printf ("Choice B ") ;
 case 'C' :
@@ -1083,7 +1083,7 @@ static void Main(string[] args)
 {
   for(j = 0;j <= 4; j++)
   console.WriteLine("*");
-  console.WriteLine("\n");
+  console.WriteLine("\\n");
 }`
           }
           language="c"
@@ -1104,7 +1104,7 @@ static void Main(string[] args)
 {
   for(j = 4;j <= i; j--)
   console.WriteLine("*");
-  console.WriteLine("\n");
+  console.WriteLine("\\n");
 }`
           }
           language="c"
@@ -1127,7 +1127,7 @@ static void Main(string[] args)
 {
   for (j = i;j <= 4; j++)
   console.WriteLine("*");
-  console.WriteLine("\n");
+  console.WriteLine("\\n");
 }`
           }
           language="c"
@@ -1150,7 +1150,7 @@ static void Main(string[] args)
 {
   for (j = 0;j <= i; j++)
   console.WriteLine("*");
-  console.WriteLine("\n");
+  console.WriteLine("\\n");
 }`
           }
           language="c"
@@ -1169,7 +1169,7 @@ static void Main(string[] args)
   {
     id: 35,
     text: <>
-      <p>For the incomplete C# program below, which of the c code fragment will <b>not</b> result in an infinite loop?</p>
+      <p>For the incomplete C# program below, which of the code fragments will <b>not</b> result in an infinite loop?</p>
       <CopyBlock
         text={
 `static void Main(string[] args)
