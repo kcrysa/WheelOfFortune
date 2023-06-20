@@ -1,0 +1,4 @@
+[
+  {"id": 1, "questionId": 1, "answerId": 1, "isCorrect": true, "date": "20.06.2022", "prize": "pen"},
+  {"id": 2, "questionId": 2, "answerId": 2, "isCorrect": false, "date": "20.06.2022", "prize": ""}
+]
