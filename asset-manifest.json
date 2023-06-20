@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/WheelOfFortune/static/css/main.cabd0e95.css",
-    "main.js": "/WheelOfFortune/static/js/main.eb9eb992.js",
+    "main.js": "/WheelOfFortune/static/js/main.b82a9487.js",
     "react-syntax-highlighter/refractor-core-import.js": "/WheelOfFortune/static/js/react-syntax-highlighter/refractor-core-import.1c5001cc.chunk.js",
     "react-syntax-highlighter_languages_refractor_abap.js": "/WheelOfFortune/static/js/react-syntax-highlighter_languages_refractor_abap.6f6c663e.chunk.js",
     "react-syntax-highlighter_languages_refractor_actionscript.js": "/WheelOfFortune/static/js/react-syntax-highlighter_languages_refractor_actionscript.dbc5fd76.chunk.js",
@@ -163,7 +163,7 @@
     "static/media/logo.png": "/WheelOfFortune/static/media/logo.786c170cd2e4ff56aa03.png",
     "index.html": "/WheelOfFortune/index.html",
     "main.cabd0e95.css.map": "/WheelOfFortune/static/css/main.cabd0e95.css.map",
-    "main.eb9eb992.js.map": "/WheelOfFortune/static/js/main.eb9eb992.js.map",
+    "main.b82a9487.js.map": "/WheelOfFortune/static/js/main.b82a9487.js.map",
     "refractor-core-import.1c5001cc.chunk.js.map": "/WheelOfFortune/static/js/react-syntax-highlighter/refractor-core-import.1c5001cc.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_abap.6f6c663e.chunk.js.map": "/WheelOfFortune/static/js/react-syntax-highlighter_languages_refractor_abap.6f6c663e.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_actionscript.dbc5fd76.chunk.js.map": "/WheelOfFortune/static/js/react-syntax-highlighter_languages_refractor_actionscript.dbc5fd76.chunk.js.map",
@@ -320,6 +320,6 @@
   },
   "entrypoints": [
     "static/css/main.cabd0e95.css",
-    "static/js/main.eb9eb992.js"
+    "static/js/main.b82a9487.js"
   ]
 }
