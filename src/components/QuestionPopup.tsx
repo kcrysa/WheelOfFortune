@@ -19,7 +19,7 @@ import { purple } from "@mui/material/colors";
 interface IQuestionPopup {
   open: boolean;
   question: IQuestion;
-  handleQuizEnd: (success: boolean) => void;
+  handleQuizEnd: (success: boolean, answerId: number) => void;
   handleCancel: () => void;
 }
 
@@ -52,8 +52,10 @@ const QuestionPopup: FC<IQuestionPopup> = ({
   };
 
   const onSubmitHandler = () => {
-    const isCorrect = Number(selectedAnswer) === question.answerId;
-    handleQuizEnd(isCorrect);
+    const answerId: number = Number(selectedAnswer);
+    const isCorrect = answerId === question.answerId;
+    
+    handleQuizEnd(isCorrect, answerId);
   };
 
   return (

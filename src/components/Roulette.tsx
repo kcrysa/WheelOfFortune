@@ -47,7 +47,7 @@ const Roulette: FC<IRoulette> = ({ data, showQuestion }) => {
         onClick={handleSpinClick}
         disabled={mustSpin}
       >
-        SPIN
+        TOUCH TO SPIN
       </button>
     </div>
   );

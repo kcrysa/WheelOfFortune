@@ -5,6 +5,9 @@ import {
   DialogContent,
   DialogTitle,
   FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
   Stack,
   TextField,
   colors,
@@ -13,7 +16,7 @@ import { ChangeEvent, FC, useEffect, useState } from "react";
 
 interface ILoginPopup {
   open: boolean;
-  onLoginHandler: (username: string, token: string) => void;
+  onLoginHandler: (username: string, token: string, fileNumber: number) => void;
   onLoginCancel: () => void;
 }
 
@@ -24,16 +27,18 @@ const LoginPopup: FC<ILoginPopup> = ({
 }) => {
   const [username, setUsername] = useState<string>("");
   const [token, setToken] = useState<string>("");
+  const [fileNumber, setFileNumber] = useState<number>(1);
 
   useEffect(() => {
     if (open) {
       setUsername("");
       setToken("");
+      setFileNumber(1);
     }
   }, [open]);
 
   const onSubmitHandler = () => {
-    onLoginHandler(username, token);
+    onLoginHandler(username, token, fileNumber);
   };
 
   const onCloseHandler = (
@@ -83,6 +88,24 @@ const LoginPopup: FC<ILoginPopup> = ({
               label="Token"
               type="password"
             />
+          </FormControl>
+          <FormControl>
+            <RadioGroup
+              name="file-number-group"
+              value={fileNumber}
+              onChange={(event: any) => setFileNumber(event.target.value)}
+            >
+              <FormControlLabel
+                value={1}
+                control={<Radio />}
+                label="File 1"
+              />
+              <FormControlLabel
+                value={2}
+                control={<Radio />}
+                label="File 2"
+              />
+            </RadioGroup>
           </FormControl>
         </Stack>
       </DialogContent>
