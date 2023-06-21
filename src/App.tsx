@@ -32,52 +32,52 @@ function App() {
   const [prize, setPrize] = useState<string>("");
   const [question, setQuestion] = useState<IQuestion>();
   const [isCorrectAnswer, setIsCorrectAnswer] = useState<boolean | null>(null);
-  const [cookies, setCookie, removeCookie] = useCookies(["username", "token", "fileNumber"]);
+  // const [cookies, setCookie, removeCookie] = useCookies(["username", "token", "fileNumber"]);
 
-  useEffect(() => {
-    if (cookies.username && cookies.token) {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, [cookies, cookies.username, cookies.token]);
+  // useEffect(() => {
+  //   if (cookies.username && cookies.token) {
+  //     setIsAuthenticated(true);
+  //   } else {
+  //     setIsAuthenticated(false);
+  //   }
+  // }, [cookies, cookies.username, cookies.token]);
 
-  const onLoginHandler = (
-    username: string,
-    token: string,
-    fileNumber: number
-  ) => {
-    setCookie("username", username, {
-      secure: true,
-      path: "/",
-      maxAge: 100000,
-    });
-    setCookie("token", token, {
-      secure: true,
-      path: "/",
-      maxAge: 100000,
-    });
-    setCookie("fileNumber", fileNumber, {
-      secure: true,
-      path: "/",
-      maxAge: 100000,
-    });
+  // const onLoginHandler = (
+  //   username: string,
+  //   token: string,
+  //   fileNumber: number
+  // ) => {
+  //   setCookie("username", username, {
+  //     secure: true,
+  //     path: "/",
+  //     maxAge: 100000,
+  //   });
+  //   setCookie("token", token, {
+  //     secure: true,
+  //     path: "/",
+  //     maxAge: 100000,
+  //   });
+  //   setCookie("fileNumber", fileNumber, {
+  //     secure: true,
+  //     path: "/",
+  //     maxAge: 100000,
+  //   });
 
-    apiGet(
-      username,
-      REPOSITORY_NAME,
-      BRANCH_NAME,
-      FILE_NAME(fileNumber),
-      (err: any, res: any) => {
-        if (res === null || res === undefined || res === "" || err) {
-          removeCookie("username");
-          removeCookie("token");
-          removeCookie("fileNumber");
-          setIsAuthenticated(false);
-        }
-      }
-    );
-  };
+  //   apiGet(
+  //     username,
+  //     REPOSITORY_NAME,
+  //     BRANCH_NAME,
+  //     FILE_NAME(fileNumber),
+  //     (err: any, res: any) => {
+  //       if (res === null || res === undefined || res === "" || err) {
+  //         removeCookie("username");
+  //         removeCookie("token");
+  //         removeCookie("fileNumber");
+  //         setIsAuthenticated(false);
+  //       }
+  //     }
+  //   );
+  // };
 
   const onShowQuestionHandler = (option: string) => {
     const questionNumber = Math.floor(Math.random() * questions.length);
@@ -91,43 +91,43 @@ function App() {
     setQuestionPopupOpen(false);
     setIsCorrectAnswer(isCorrect);
 
-    const interaction = {
-      questionId: question?.id,
-      answerId: answerId,
-      isCorrect: isCorrect,
-      date: new Date().toLocaleString(),
-      prize: prize,
-    };
+    // const interaction = {
+    //   questionId: question?.id,
+    //   answerId: answerId,
+    //   isCorrect: isCorrect,
+    //   date: new Date().toLocaleString(),
+    //   prize: prize,
+    // };
 
-    apiGet(
-      cookies.username,
-      REPOSITORY_NAME,
-      BRANCH_NAME,
-      FILE_NAME(cookies.fileNumber),
-      (err: any, res: any) => {
-        if (res === null || res === undefined || res === "" || err) {
-          removeCookie("username");
-          removeCookie("token");
-          removeCookie("fileNumber");
-          setIsAuthenticated(false);
-          return;
-        }
+    // apiGet(
+    //   cookies.username,
+    //   REPOSITORY_NAME,
+    //   BRANCH_NAME,
+    //   FILE_NAME(cookies.fileNumber),
+    //   (err: any, res: any) => {
+    //     if (res === null || res === undefined || res === "" || err) {
+    //       removeCookie("username");
+    //       removeCookie("token");
+    //       removeCookie("fileNumber");
+    //       setIsAuthenticated(false);
+    //       return;
+    //     }
 
-        apiPost(
-          cookies.username,
-          REPOSITORY_NAME,
-          BRANCH_NAME,
-          FILE_NAME(cookies.fileNumber),
-          [...res.content, interaction],
-          cookies.token,
-          (err: any, result: any, id: any) => {
-            if (err) {
-              console.log(err);
-            }
-          }
-        );
-      }
-    );
+    //     apiPost(
+    //       cookies.username,
+    //       REPOSITORY_NAME,
+    //       BRANCH_NAME,
+    //       FILE_NAME(cookies.fileNumber),
+    //       [...res.content, interaction],
+    //       cookies.token,
+    //       (err: any, result: any, id: any) => {
+    //         if (err) {
+    //           console.log(err);
+    //         }
+    //       }
+    //     );
+    //   }
+    // );
   };
 
   const onHandleSuccessModalClose = (
@@ -140,11 +140,11 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className="content">
-        <LoginPopup
+        {/* <LoginPopup
           open={!isAuthenticated}
           onLoginCancel={() => setIsAuthenticated(false)}
           onLoginHandler={onLoginHandler}
-        />
+        /> */}
         {isCorrectAnswer === null && (
           <Roulette data={categories} showQuestion={onShowQuestionHandler} />
         )}

@@ -1,4 +1,4 @@
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CodeBlock, dracula } from "react-code-blocks";
 
 export interface IAnswer {
   id: number;
@@ -132,7 +132,7 @@ export const questions: IQuestion[] = [
     id: 6,
     text: <>
       <p>Choose the best statement with respect to following three program snippets.</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `/*Program Snippet 1 with for loop*/
 for (i = 0; i < 10; i++)
@@ -224,7 +224,7 @@ do
     id: 8,
     text: <>
       <p>Predict output of the following program</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `char inchar = 'A';
 switch (inchar)
@@ -276,7 +276,7 @@ default:
     id: 9,
     text: <>
       <p>Predict output of the following program:</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `#include <stdio.h>
 
@@ -325,7 +325,7 @@ int main()
     id: 10,
     text: <>
       <p>Consider the following recursive function fun(x, y). What is the value of fun(4, 3):</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `int fun(int x, int y) 
 {
@@ -366,7 +366,7 @@ int main()
     id: 11,
     text: <>
       <p>What is the output of the following program?</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `#include<stdio.h>
 void print(int n)
@@ -417,7 +417,7 @@ int main()
     id: 12,
     text: <>
       <p>What is the output of the following Java program?</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `class Base {
   public void Print() {
@@ -670,7 +670,7 @@ class Main{
     id: 20,
     text: <>
       <p>What does the following piece of code do?</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `for (int i = 0; i < arr.length-1; i++)
 {
@@ -761,7 +761,7 @@ class Main{
     id: 23,
     text: <>
       <p>What will be the output of the following Java code?</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `class increment {
   public static void main(String args[]) 
@@ -803,7 +803,7 @@ class Main{
     id: 24,
     text: <>
       <p>What will be the output of the following JavaScript code snippet?</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `function equalto()
 {
@@ -1053,7 +1053,7 @@ class Main{
     id: 34,
     text: <>
       <p>Which of the C# code should be added to get the following output?</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `* * * * *
 * * * *
@@ -1077,7 +1077,7 @@ static void Main(string[] args)
     answers: [
       {
         id: 1,
-        text: <CopyBlock
+        text: <CodeBlock
           text={
 `for (i = 0;i <= 4; i++)
 {
@@ -1098,7 +1098,7 @@ static void Main(string[] args)
         id: 2,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `for (i = 0;i <= 4; i++)
 {
@@ -1121,7 +1121,7 @@ static void Main(string[] args)
         id: 3,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `for (i = 0;i <= 4; i++)
 {
@@ -1144,7 +1144,7 @@ static void Main(string[] args)
         id: 4,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `for ( i = 0;i <= 4; i++)
 {
@@ -1170,7 +1170,7 @@ static void Main(string[] args)
     id: 35,
     text: <>
       <p>For the incomplete C# program below, which of the code fragments will <b>not</b> result in an infinite loop?</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `static void Main(string[] args)
 {
@@ -1192,7 +1192,7 @@ static void Main(string[] args)
         id: 1,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `do
 {
@@ -1213,7 +1213,7 @@ static void Main(string[] args)
         id: 2,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `do
 {
@@ -1234,7 +1234,7 @@ static void Main(string[] args)
         id: 3,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `do
 {
@@ -1253,7 +1253,7 @@ static void Main(string[] args)
       },
       {
         id: 4,
-        text: <CopyBlock
+        text: <CodeBlock
         text={
 `do
 {
@@ -1275,7 +1275,7 @@ static void Main(string[] args)
     id: 36,
     text: <>
       <p>Which of the following pieces of code corrects the following program, resulting in printing the minus sign 20 times?</p>
-      <CopyBlock
+      <CodeBlock
         text={
 `#include <stdio.h>
 int main(){
@@ -1299,7 +1299,7 @@ int main(){
         id: 1,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `for( i = 0; -i < n; i-- )
 printf("-");`
@@ -1318,7 +1318,7 @@ printf("-");`
         id: 2,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `for( i = 0; i + n; i-- )
 printf("-");`
@@ -1337,7 +1337,7 @@ printf("-");`
         id: 3,
         text: 
         <>
-          <CopyBlock
+          <CodeBlock
           text={
 `for( i = 0; i < n; n-- )
 printf("-");`
