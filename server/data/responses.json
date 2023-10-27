@@ -1,0 +1,18 @@
+[
+  {
+    "questionNumber": 21,
+    "correctAnswer": 3,
+    "selectedAnswer": 4,
+    "prize": "Key Chain",
+    "isCorrect": false,
+    "date": "2023-10-27T10:10:27.320Z"
+  },
+  {
+    "questionNumber": 5,
+    "correctAnswer": 1,
+    "selectedAnswer": 1,
+    "prize": "Key Chain",
+    "isCorrect": true,
+    "date": "27.10.2023 13:17:00"
+  }
+]
