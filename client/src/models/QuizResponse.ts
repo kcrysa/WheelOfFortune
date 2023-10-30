@@ -1,4 +1,4 @@
-export interface QuizResponse {
+export interface IQuizResponse {
   questionNumber: number;
   correctAnswer: number;
   selectedAnswer: number;

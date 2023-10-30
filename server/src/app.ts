@@ -3,7 +3,8 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import * as path from "path";
 import { readFile, writeFile } from "fs";
-import { IQuizResponse } from "../models/QuizResponse";
+import { QuizResponse } from "../models/QuizResponse";
+import { Prize } from "../models/Prize";
 
 const app = express();
 
@@ -37,14 +38,11 @@ app.post("/api/responses", function (req, res) {
         error: "An unexpected error occurred while reading file.",
       });
     }
-    const parsedData: any[] = JSON.parse(data.toString());
+    const parsedData: QuizResponse[] = JSON.parse(data.toString());
+    const quizResponse: QuizResponse = req.body;
     writeFile(
       filePath,
-      JSON.stringify(
-        [...parsedData, { ...(req.body as IQuizResponse) }],
-        null,
-        2
-      ),
+      JSON.stringify([...parsedData, { ...quizResponse }], null, 2),
       (err) => {
         if (err) {
           console.log("Failed to write updated data to file");
@@ -53,9 +51,60 @@ app.post("/api/responses", function (req, res) {
             error: "An unexpected error occurred while writing file.",
           });
         }
+
+        if (quizResponse.isCorrect) {
+          return updatePrizeList(res, quizResponse);
+        }
         return res.json({ success: true });
       }
     );
+  });
+});
+
+const updatePrizeList = (res: any, quizResponse: QuizResponse) => {
+  const filePath: string = "./data/prizes.json";
+  readFile(filePath, (error: any, data: Buffer) => {
+    if (error) {
+      console.log(error);
+      return res.json({
+        success: false,
+        error: "An unexpected error occurred while reading file.",
+      });
+    }
+    const parsedData: Prize[] = JSON.parse(data.toString());
+    const updatedPrizeIndex: number = parsedData.findIndex(
+      (prize: Prize) =>
+        prize.name === quizResponse.prize &&
+        quizResponse.date.startsWith(prize.date)
+    );
+    parsedData[updatedPrizeIndex].quantity--;
+
+    writeFile(filePath, JSON.stringify([...parsedData], null, 2), (err) => {
+      if (err) {
+        console.log("Failed to write updated data to file");
+        return res.json({
+          success: false,
+          error: "An unexpected error occurred while writing file.",
+        });
+      }
+
+      return res.json({ success: true });
+    });
+  });
+};
+
+app.get("/api/prizes", function (req, res) {
+  const filePath: string = "./data/prizes.json";
+  readFile(filePath, (error: any, data: Buffer) => {
+    if (error) {
+      console.log(error);
+      return res.json({
+        success: false,
+        error: "An unexpected error occurred while reading file.",
+      });
+    }
+    const parsedData: any[] = JSON.parse(data.toString());
+    return res.json(parsedData);
   });
 });
 

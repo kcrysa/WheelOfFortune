@@ -1,19 +1,45 @@
 import axios from "axios";
 import moment from "moment";
-import { useState } from "react";
-import { categories } from "../data/categories";
-import { IQuestion, IQuizResponse, questions } from "../data/questions";
+import { useEffect, useState } from "react";
 import "../App.css";
+import { ICategory, categories } from "../data/categories";
+import { questions } from "../data/questions";
+import logo from "../images/logo.png";
+import { IQuestion } from "../models/Question";
+import { IQuizResponse } from "../models/QuizResponse";
 import QuestionPopup from "./QuestionPopup";
 import QuizResult from "./QuizResult";
 import Roulette from "./Roulette";
-import logo from "../images/logo.png";
+import { IPrize } from "../models/Prize";
 
 const Quiz: React.FC = () => {
   const [questionPopupOpen, setQuestionPopupOpen] = useState<boolean>(false);
   const [prize, setPrize] = useState<string>("");
   const [question, setQuestion] = useState<IQuestion | null>(null);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState<boolean | null>(null);
+  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    getPrizes();
+  }, []);
+
+  const getPrizes = async () => {
+    const { data } = await axios.get("/api/prizes");
+
+    setAvailableCategories(
+      Array.from(
+        new Set(
+          data
+            .filter(
+              (prize: IPrize) =>
+                prize.date === moment().format("DD.MM.YYYY") &&
+                prize.quantity > 0
+            )
+            .map((prize: IPrize) => prize.name)
+        )
+      )
+    );
+  };
 
   const onShowQuestionHandler = (option: string) => {
     const questionNumber = Math.floor(Math.random() * questions.length);
@@ -41,6 +67,7 @@ const Quiz: React.FC = () => {
 
     setTimeout(() => {
       setIsCorrectAnswer(null);
+      getPrizes();
     }, 8000);
   };
 
@@ -62,8 +89,13 @@ const Quiz: React.FC = () => {
 
   return (
     <div className="content">
-      {isCorrectAnswer === null && (
-        <Roulette data={categories} showQuestion={onShowQuestionHandler} />
+      {isCorrectAnswer === null && availableCategories.length > 0 && (
+        <Roulette
+          data={categories.filter(
+            (x: ICategory) => availableCategories.indexOf(x.option!) >= 0
+          )}
+          showQuestion={onShowQuestionHandler}
+        />
       )}
       {question && (
         <QuestionPopup
@@ -74,10 +106,7 @@ const Quiz: React.FC = () => {
         />
       )}
       {isCorrectAnswer !== null && (
-        <QuizResult
-          isCorrectAnswer={isCorrectAnswer}
-          prize={prize}
-        />
+        <QuizResult isCorrectAnswer={isCorrectAnswer} prize={prize} />
       )}
       <img src={logo} alt="" className="logo" />
     </div>

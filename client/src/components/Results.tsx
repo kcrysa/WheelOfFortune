@@ -3,7 +3,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../App.css";
-import { IQuizResponse } from "../data/questions";
+import { IQuizResponse } from "../models/QuizResponse";
 
 const Results: React.FC = () => {
   const [responses, setResponses] = useState<IQuizResponse[]>([]);

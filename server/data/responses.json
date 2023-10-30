@@ -1,1 +1,56 @@
-[]
+[
+  {
+    "questionNumber": 28,
+    "correctAnswer": 3,
+    "selectedAnswer": 3,
+    "prize": "Touch Pen",
+    "isCorrect": true,
+    "aborted": false,
+    "date": "30.10.2023 21:29:09"
+  },
+  {
+    "questionNumber": 13,
+    "correctAnswer": 1,
+    "selectedAnswer": 3,
+    "prize": "Touch Pen",
+    "isCorrect": false,
+    "aborted": false,
+    "date": "30.10.2023 21:38:37"
+  },
+  {
+    "questionNumber": 28,
+    "correctAnswer": 3,
+    "selectedAnswer": 3,
+    "prize": "Touch Pen",
+    "isCorrect": true,
+    "aborted": false,
+    "date": "30.10.2023 21:39:04"
+  },
+  {
+    "questionNumber": 4,
+    "correctAnswer": 4,
+    "selectedAnswer": 4,
+    "prize": "Notebook",
+    "isCorrect": true,
+    "aborted": false,
+    "date": "30.10.2023 21:40:24"
+  },
+  {
+    "questionNumber": 28,
+    "correctAnswer": 3,
+    "selectedAnswer": 3,
+    "prize": "Touch Pen",
+    "isCorrect": true,
+    "aborted": false,
+    "date": "30.10.2023 21:40:56"
+  },
+  {
+    "questionNumber": 29,
+    "correctAnswer": 4,
+    "selectedAnswer": 4,
+    "prize": "Key Chain",
+    "isCorrect": true,
+    "aborted": false,
+    "date": "30.10.2023 21:41:34"
+  }
+]

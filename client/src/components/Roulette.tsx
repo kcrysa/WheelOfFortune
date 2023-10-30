@@ -1,11 +1,11 @@
-import { FC, useCallback, useState } from "react";
-import { Wheel, WheelDataType } from "react-custom-roulette";
-import { categoryWeights } from "../data/categories";
-import { IWeightedRandom, weightedRandom } from "../utils/weightedRandom";
 import { colors } from "@mui/material";
+import { FC, useCallback, useState } from "react";
+import { Wheel } from "react-custom-roulette";
+import { IWeightedRandom, weightedRandom } from "../utils/weightedRandom";
+import { ICategory } from "../data/categories";
 
 interface IRoulette {
-  data: WheelDataType[];
+  data: ICategory[];
   showQuestion: (option: string) => void;
 }
 
@@ -14,7 +14,10 @@ const Roulette: FC<IRoulette> = ({ data, showQuestion }) => {
   const [prizeNumber, setPrizeNumber] = useState(0);
 
   const handleSpinClick = () => {
-    const selectedItem: IWeightedRandom = weightedRandom(data, categoryWeights);
+    const selectedItem: IWeightedRandom = weightedRandom(
+      data,
+      data.map((x: ICategory) => x.weight)
+    );
     setPrizeNumber(selectedItem.index);
     setMustSpin(true);
   };

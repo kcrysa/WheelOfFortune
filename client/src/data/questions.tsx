@@ -1,26 +1,5 @@
 import { CodeBlock, dracula } from "react-code-blocks";
-
-export interface IAnswer {
-  id: number;
-  text: string | React.ReactNode;
-}
-
-export interface IQuestion {
-  id: number;
-  text: React.ReactNode;
-  answers: IAnswer[];
-  answerId: number;
-}
-
-export interface IQuizResponse {
-  questionNumber: number;
-  correctAnswer: number;
-  selectedAnswer: number;
-  prize: string;
-  isCorrect: boolean;
-  aborted: boolean;
-  date: string;
-}
+import { IQuestion } from "../models/Question";
 
 export const questions: IQuestion[] = [
   {
@@ -936,7 +915,7 @@ class Main{
   },
   {
     id: 28,
-    text: "Which of the following testing is related to the boundary value analysis?",
+    text: "Which of the following testing methodologies is related to the boundary value analysis?",
     answers: [
       {
         id: 1,

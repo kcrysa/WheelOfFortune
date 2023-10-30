@@ -16,7 +16,8 @@ import {
 import { purple } from "@mui/material/colors";
 import _ from "lodash";
 import { FC, useEffect, useState } from "react";
-import { IAnswer, IQuestion } from "../data/questions";
+import { IAnswer } from "../models/Answer";
+import { IQuestion } from "../models/Question";
 import { CloseIcon } from "./CloseIcon";
 
 interface IQuestionPopup {
@@ -111,9 +112,9 @@ const QuestionPopup: FC<IQuestionPopup> = ({
                 key={answer.id}
                 value={answer.id}
                 label={answer.text}
-                disabled={isSubmitted}
                 control={
                   <Radio
+                    disabled={isSubmitted}
                     sx={{
                       color:
                         isSubmitted && question.answerId === answer.id
@@ -124,6 +125,12 @@ const QuestionPopup: FC<IQuestionPopup> = ({
                           isSubmitted && question.answerId === answer.id
                             ? colors.green[800]
                             : colors.grey[400],
+                      },
+                      "&.Mui-disabled": {
+                        color:
+                          isSubmitted && question.answerId === answer.id
+                            ? colors.green[300]
+                            : colors.grey[700],
                       },
                     }}
                   />
