@@ -1,25 +1,17 @@
 import { Box, Modal, Typography, colors } from "@mui/material";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import ParticlesContainer from "./Fireworks";
 
 interface IQuizResult {
-  isSuccess: boolean;
+  isCorrectAnswer: boolean;
   prize: string;
-  handleModalClose: (
-    event: {},
-    reason: "backdropClick" | "escapeKeyDown"
-  ) => void;
 }
 
-const QuizResult: FC<IQuizResult> = ({
-  isSuccess,
-  prize,
-  handleModalClose,
-}) => {
+const QuizResult: FC<IQuizResult> = ({ isCorrectAnswer, prize }) => {
   return (
     <>
-      {isSuccess && <ParticlesContainer />}
-      <Modal open={true} onClose={handleModalClose}>
+      {isCorrectAnswer && <ParticlesContainer />}
+      <Modal open={isCorrectAnswer !== null} disableEscapeKeyDown>
         <Box
           sx={{
             position: "absolute" as "absolute",
@@ -37,7 +29,7 @@ const QuizResult: FC<IQuizResult> = ({
           }}
         >
           <Typography variant="h2" component="h2" color={colors.common.white}>
-            {isSuccess ? <>Claim your {prize}!</> : <>Better luck next time!</>}
+            {isCorrectAnswer ? <>Claim your {prize}!</> : <>Better luck next time!</>}
           </Typography>
         </Box>
       </Modal>

@@ -4,17 +4,20 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  DialogTitle,
   FormControl,
   FormControlLabel,
+  IconButton,
   Radio,
   RadioGroup,
   colors,
   styled,
 } from "@mui/material";
+import { purple } from "@mui/material/colors";
 import _ from "lodash";
 import { FC, useEffect, useState } from "react";
 import { IAnswer, IQuestion } from "../data/questions";
-import { purple } from "@mui/material/colors";
+import { CloseIcon } from "./CloseIcon";
 
 interface IQuestionPopup {
   open: boolean;
@@ -26,7 +29,7 @@ interface IQuestionPopup {
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
   backgroundColor: purple[500],
-  '&:hover': {
+  "&:hover": {
     backgroundColor: purple[700],
   },
 }));
@@ -39,29 +42,38 @@ const QuestionPopup: FC<IQuestionPopup> = ({
 }) => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [shuffledAnswers, setShuffledAnswers] = useState<IAnswer[]>([]);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
     if (open) {
       setSelectedAnswer("");
+      setIsSubmitted(false);
       setShuffledAnswers(_.shuffle(question.answers));
     }
   }, [open, question.answers]);
+
+  const handleModalClose = (event: {}, reason: string) => {
+    if (reason === "backdropClick") {
+      return;
+    }
+    handleCancel();
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedAnswer((event.target as HTMLInputElement).value);
   };
 
-  const onSubmitHandler = () => {
+  const handleContinue = () => {
     const answerId: number = Number(selectedAnswer);
     const isCorrect = answerId === question.answerId;
-    
+
     handleQuizEnd(isCorrect, answerId);
   };
 
   return (
     <Dialog
       open={open}
-      onClose={handleCancel}
+      onClose={handleModalClose}
       fullWidth
       maxWidth="md"
       PaperProps={{
@@ -70,7 +82,20 @@ const QuestionPopup: FC<IQuestionPopup> = ({
           color: colors.common.white,
         },
       }}
+      disableEscapeKeyDown
     >
+      <DialogTitle>
+        <IconButton
+          onClick={(event: any) => handleModalClose(event, "closeButton")}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
       <DialogContent>
         <div style={{ fontSize: "1.2em", marginBottom: "20px" }}>
           {question.text}
@@ -85,23 +110,52 @@ const QuestionPopup: FC<IQuestionPopup> = ({
               <FormControlLabel
                 key={answer.id}
                 value={answer.id}
-                control={<Radio />}
                 label={answer.text}
+                disabled={isSubmitted}
+                control={
+                  <Radio
+                    sx={{
+                      color:
+                        isSubmitted && question.answerId === answer.id
+                          ? colors.green[800]
+                          : colors.grey[400],
+                      "&.Mui-checked": {
+                        color:
+                          isSubmitted && question.answerId === answer.id
+                            ? colors.green[800]
+                            : colors.grey[400],
+                      },
+                    }}
+                  />
+                }
               />
             ))}
           </RadioGroup>
         </FormControl>
       </DialogContent>
       <DialogActions style={{ justifyContent: "space-around" }}>
-        <ColorButton
-          variant="contained"
-          size="large"
-          className="submit-button"
-          onClick={onSubmitHandler}
-          disabled={selectedAnswer === ""}
-        >
-          Submit
-        </ColorButton>
+        {!isSubmitted ? (
+          <ColorButton
+            variant="contained"
+            size="large"
+            className="submit-button"
+            onClick={() => setIsSubmitted(true)}
+            disabled={selectedAnswer === ""}
+          >
+            Submit
+          </ColorButton>
+        ) : (
+          <ColorButton
+            variant="contained"
+            size="large"
+            className="submit-button"
+            onClick={handleContinue}
+          >
+            {question.answerId === Number(selectedAnswer)
+              ? "Claim your prize"
+              : "Continue"}
+          </ColorButton>
+        )}
       </DialogActions>
     </Dialog>
   );

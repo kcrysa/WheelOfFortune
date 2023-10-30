@@ -12,23 +12,47 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get("/api/responses", function (req, res) {
+  const filePath: string = "./data/responses.json";
+  readFile(filePath, (error: any, data: Buffer) => {
+    if (error) {
+      console.log(error);
+      return res.json({
+        success: false,
+        error: "An unexpected error occurred while reading file.",
+      });
+    }
+    const parsedData: any[] = JSON.parse(data.toString());
+    return res.json(parsedData);
+  });
+});
+
 app.post("/api/responses", function (req, res) {
   const filePath: string = "./data/responses.json";
   readFile(filePath, (error: any, data: Buffer) => {
     if (error) {
       console.log(error);
-      return;
+      return res.json({
+        success: false,
+        error: "An unexpected error occurred while reading file.",
+      });
     }
     const parsedData: any[] = JSON.parse(data.toString());
     writeFile(
       filePath,
-      JSON.stringify([...parsedData, { ...(req.body as IQuizResponse) }], null, 2),
+      JSON.stringify(
+        [...parsedData, { ...(req.body as IQuizResponse) }],
+        null,
+        2
+      ),
       (err) => {
         if (err) {
           console.log("Failed to write updated data to file");
-          return res.json({ success: false });
+          return res.json({
+            success: false,
+            error: "An unexpected error occurred while writing file.",
+          });
         }
-        console.log("Updated file successfully");
         return res.json({ success: true });
       }
     );

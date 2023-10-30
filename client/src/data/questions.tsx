@@ -117,7 +117,7 @@ export const questions: IQuestion[] = [
   },
   {
     id: 5,
-    text: "Let x be an integer which can take a value of 0 or 1. The statement if(x = =0) x = 1; else x = 0; is equivalent to which one of the following?",
+    text: "Let x be an integer which can take a value of 0 or 1. The statement if(x == 0) x = 1; else x = 0; is equivalent to which one of the following?",
     answers: [
       {
         id: 1,
@@ -136,7 +136,7 @@ export const questions: IQuestion[] = [
         text: "x = 1 % x;",
       },
     ],
-    answerId: 1,
+    answerId: 2,
   },
   {
     id: 6,
@@ -655,7 +655,7 @@ class Main{
     answers: [
       {
         id: 1,
-        text: "27000",
+        text: "29000",
       },
       {
         id: 2,
@@ -667,7 +667,7 @@ class Main{
       },
       {
         id: 4,
-        text: "20000",
+        text: "21000",
       },
     ],
     answerId: 1,
@@ -1181,7 +1181,7 @@ static void Main(string[] args)
     text: (
       <>
         <p>
-          For the incomplete C# program below, which of the code fragments will{" "}
+          For the incomplete C# program below, which of the code fragments will
           <b>not</b> result in an infinite loop?
         </p>
         <CodeBlock
@@ -1350,5 +1350,51 @@ printf("-");`}
       },
     ],
     answerId: 4,
+  },
+  {
+    id: 37,
+    text: "What are the key components of DevOps?",
+    answers: [
+      {
+        id: 1,
+        text: "Cost savings and scalability",
+      },
+      {
+        id: 2,
+        text: "Continuous Integration",
+      },
+      {
+        id: 3,
+        text: "Continuous Delivery & Monitoring",
+      },
+      {
+        id: 4,
+        text: "All of the above",
+      },
+    ],
+    answerId: 4,
+  },
+  {
+    id: 38,
+    text: "What is the use of Git?",
+    answers: [
+      {
+        id: 1,
+        text: "Containerization tool",
+      },
+      {
+        id: 2,
+        text: "Continuous Integration tool",
+      },
+      {
+        id: 3,
+        text: "Version Control System tool",
+      },
+      {
+        id: 4,
+        text: "Continuous Monitoring tool",
+      },
+    ],
+    answerId: 3,
   },
 ];
