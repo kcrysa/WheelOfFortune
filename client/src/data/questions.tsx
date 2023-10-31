@@ -224,7 +224,7 @@ do
     id: 8,
     text: (
       <>
-        <p>Predict output of the following program</p>
+        <p>Predict the output of the following program:</p>
         <CodeBlock
           text={`char inchar = 'A';
 switch (inchar)
@@ -275,7 +275,7 @@ default:
     id: 9,
     text: (
       <>
-        <p>Predict output of the following program:</p>
+        <p>Predict the output of the following program:</p>
         <CodeBlock
           text={`#include <stdio.h>
 
@@ -490,7 +490,7 @@ class Main{
     text: (
       <>
         <p>IF</p>
-        <p>4 + 4 = 16</p>
+        <p>4 + 4 = 6</p>
         <p>25 + 25 = 45</p>
         <p>16 + 16 = 28</p>
         <p>9 + 9 = 15</p>
@@ -516,7 +516,7 @@ class Main{
         text: "3",
       },
     ],
-    answerId: 1,
+    answerId: 2,
   },
   {
     id: 14,
@@ -811,7 +811,7 @@ class Main{
         <CodeBlock
           text={`function equalto()
 {
-    int num=10;
+    const num=10;
     if(num==="10")
         return true;
     else
@@ -1082,8 +1082,8 @@ static void Main(string[] args)
             text={`for (i = 0;i <= 4; i++)
 {
   for(j = 0;j <= 4; j++)
-  console.WriteLine("*");
-  console.WriteLine("\\n");
+  Console.Write("*");
+  Console.Write("\\n");
 }`}
             language="c"
             showLineNumbers={true}
@@ -1100,8 +1100,8 @@ static void Main(string[] args)
               text={`for (i = 0;i <= 4; i++)
 {
   for(j = 4;j <= i; j--)
-  console.WriteLine("*");
-  console.WriteLine("\\n");
+  Console.Write("*");
+  Console.Write("\\n");
 }`}
               language="c"
               showLineNumbers={true}
@@ -1120,8 +1120,8 @@ static void Main(string[] args)
               text={`for (i = 0;i <= 4; i++)
 {
   for (j = i;j <= 4; j++)
-  console.WriteLine("*");
-  console.WriteLine("\\n");
+  Console.Write("*");
+  Console.Write("\\n");
 }`}
               language="c"
               showLineNumbers={true}
@@ -1140,8 +1140,8 @@ static void Main(string[] args)
               text={`for ( i = 0;i <= 4; i++)
 {
   for (j = 0;j <= i; j++)
-  console.WriteLine("*");
-  console.WriteLine("\\n");
+  Console.Write("*");
+  Console.Write("\\n");
 }`}
               language="c"
               showLineNumbers={true}
@@ -1348,7 +1348,7 @@ printf("-");`}
       },
       {
         id: 4,
-        text: "All of the above",
+        text: "All of the options",
       },
     ],
     answerId: 4,
